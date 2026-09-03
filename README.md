@@ -27,10 +27,12 @@ klickas. FormSubmit kräver inget konto, men adressen måste aktiveras en gång:
 2. Du får ett mejl från FormSubmit med en aktiveringslänk — klicka den.
 3. Därefter landar varje "ja" i inkorgen.
 
-Aktiveringsmejlet innehåller också ett slumpat alias
-(`https://formsubmit.co/ajax/xxxxxxxx`). Byt ut adressen i `NOTIFY_ENDPOINT`
-mot aliaset — annars ligger mejladressen läsbar i `script.js` för vem som helst
-som tittar i källkoden.
+Adressen är utbytt mot FormSubmits slumpade alias, så mejladressen ligger inte
+läsbar i `script.js`.
+
+Vill du testa flera gånger: lägg till `?test` i adressen
+(`http://localhost:8000/?test`). Då skickas notisen vid varje "ja" och spärren
+sätts inte.
 
 Sidan sparar ett flag i `localStorage` så att en omladdning inte skickar fler
 mejl. Blockeras `fetch` (adblock, ingen uppkoppling) syns inget för henne —

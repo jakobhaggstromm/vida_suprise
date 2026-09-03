@@ -1,8 +1,8 @@
-// Mejlet som får en notis när hon svarar ja.
-// Byt gärna adressen mot FormSubmit-aliaset (se README) så den inte
-// ligger läsbar i koden.
-const NOTIFY_ENDPOINT = "https://formsubmit.co/ajax/jakob.haggstromm@gmail.com";
+// Notisen när hon svarar ja. Adressen är dold bakom FormSubmits alias.
+const NOTIFY_ENDPOINT = "https://formsubmit.co/ajax/f49fed725397557219306e1959799e20";
 const SENT_KEY = "chans:notified";
+// ?test i adressen skickar varje gång, utan att sätta spärren.
+const TESTING = new URLSearchParams(location.search).has("test");
 
 const answers = document.querySelector("#answers");
 const yesButton = document.querySelector("#yesButton");
@@ -37,7 +37,7 @@ function markSent() {
 }
 
 async function notify() {
-  if (alreadySent()) return;
+  if (!TESTING && alreadySent()) return;
 
   try {
     const response = await fetch(NOTIFY_ENDPOINT, {
@@ -56,7 +56,7 @@ async function notify() {
     });
 
     // Skicka bara en gång — men låt en misslyckad skickning få nytt försök.
-    if (response.ok) markSent();
+    if (response.ok && !TESTING) markSent();
   } catch {
     // Sidan ska aldrig gå sönder för att mejlet inte gick fram.
   }
