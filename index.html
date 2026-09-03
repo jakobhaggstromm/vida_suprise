@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="En fråga." />
+    <meta name="theme-color" content="#1b2430" />
+    <meta property="og:title" content="Får jag chans på dig?" />
+    <meta property="og:description" content="En fråga." />
+    <meta property="og:image" content="assets/dusk.jpg" />
+    <title>Får jag chans på dig?</title>
+    <link rel="preload" href="assets/dusk.jpg" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <img
+        class="card__image"
+        src="assets/dusk.jpg"
+        width="1200"
+        height="615"
+        alt="Skymning över en äng"
+      />
+
+      <div class="card__body" aria-live="polite">
+        <h1>Får jag chans på dig?</h1>
+
+        <div class="answers" id="answers">
+          <button class="button button--yes" id="yesButton" type="button">
+            Bale
+          </button>
+          <button class="button button--no" id="noButton" type="button">
+            Na
+          </button>
+        </div>
+
+        <p class="reply" id="reply" hidden>
+          Älskarejjj
+        </p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
